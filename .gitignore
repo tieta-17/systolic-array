@@ -1,0 +1,225 @@
+############################################################
+# XILINX VIVADO .gitignore
+# FPGA / RTL / SystemVerilog Projects
+############################################################
+
+
+############################################################
+# 1. VIVADO GENERATED PROJECT DIRECTORIES
+############################################################
+
+# Synthesis and implementation runs
+*.runs/
+
+# Project caches
+*.cache/
+
+# Vivado internal data
+.Xil/
+**/.Xil/
+
+# Hardware manager files
+*.hw/
+
+# Simulation outputs
+*.sim/
+
+# Generated IP output products
+*.gen/
+*.ip_user_files/
+
+# Vivado temporary data
+*.data/
+
+
+############################################################
+# 2. SYNTHESIS AND IMPLEMENTATION OUTPUTS
+############################################################
+
+# Design checkpoints
+*.dcp
+
+# Synthesis and implementation reports
+*.rpt
+*.rpx
+
+# Generated netlists and implementation artifacts
+*.edf
+*.edif
+*.ncd
+*.ngc
+*.ngd
+*.nqm
+
+# Hardware handoff files
+*.hwdef
+*.sysdef
+
+# Generated IP simulation models and stubs
+*_stub.v
+*_stub.vhdl
+*_funcsim.v
+*_funcsim.vhdl
+
+
+############################################################
+# 3. FPGA BITSTREAMS
+############################################################
+
+# Generated programming files
+*.bit
+*.bin
+*.mcs
+*.prm
+*.svf
+*.pdi
+
+# Debug probes
+*.ltx
+
+
+############################################################
+# 4. SIMULATION GENERATED FILES
+############################################################
+
+# Vivado XSim
+xsim.dir/
+*.wdb
+*.vcd
+*.vpd
+*.fst
+*.ghw
+
+# Simulator logs
+xsim.log
+xsim.jou
+xelab.log
+xelab.pb
+xvlog.log
+xvlog.pb
+xvhdl.log
+xvhdl.pb
+
+# Other simulator artifacts
+*.wlf
+transcript
+vsim.dbg
+modelsim.ini
+work/
+
+
+############################################################
+# 5. LOGS AND JOURNALS
+############################################################
+
+*.log
+*.jou
+*.str
+*.debug
+*.pb
+
+# Vivado usage statistics
+webtalk*
+usage_statistics_webtalk*
+
+# Tool-generated diagnostics
+*.vdi
+*.dmp
+
+
+############################################################
+# 6. TEMPORARY AND BACKUP FILES
+############################################################
+
+*.tmp
+*.temp
+*.bak
+*.backup
+*.backup.*
+*.orig
+*.swp
+*.swo
+*~
+
+# Crash files
+hs_err_pid*
+vivado_pid*.zip
+core
+core.*
+
+
+############################################################
+# 7. OPERATING SYSTEM FILES
+############################################################
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Linux
+.nfs*
+
+
+############################################################
+# 8. PYTHON / TESTING
+############################################################
+
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Python packaging
+*.egg-info/
+dist/
+build/
+
+
+############################################################
+# 9. OPTIONAL IDE TEMPORARY FILES
+############################################################
+
+# JetBrains
+.idea/
+
+# VS Code workspace-local settings
+.vscode/*.log
+.vscode/.history/
+
+
+############################################################
+# 10. IMPORTANT FILES TO KEEP TRACKED
+############################################################
+
+# Do NOT ignore:
+#
+# *.v       Verilog RTL
+# *.sv      SystemVerilog RTL and testbenches
+# *.vh      Verilog headers
+# *.svh     SystemVerilog headers
+# *.vhd     VHDL
+# *.xdc     FPGA pin and timing constraints
+# *.tcl     Project creation and automation scripts
+# *.xpr     Vivado project configuration
+# *.xci     IP configuration
+# *.bd      Block designs
+# *.mem     Memory initialization files
+# *.coe     BRAM initialization files
+# *.wcfg    Custom simulation waveform configurations
+#
+# IMPORTANT:
+# Do not ignore *.srcs/ if Vivado stores your original
+# RTL, constraints, IP configurations, or testbenches there.
+############################################################
