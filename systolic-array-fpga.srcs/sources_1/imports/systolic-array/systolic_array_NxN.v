@@ -30,15 +30,16 @@ module systolic_array_NxN #(
     wire [ACCUMULATE_WIDTH - 1 : 0] acc_wire [0:N-1][0:N-1];
 
     // Initialize processing elements;
+    genvar row, col;
     generate
-        for (genvar row; row < N; row = row + 1) begin : ROW
+        for (row = 0; row < N; row = row + 1) begin : ROW
             // Assign A into the leftmost Processing element of each row
-            assign a_wire[row][0] = i_MatrixA[row*DATA_WIDTH +: DATA_WIDTH]
+            assign a_wire[row][0] = i_MatrixA[row*DATA_WIDTH +: DATA_WIDTH];
 
-            for (genvar col; col < N; col = col + 1) begin : COL
+            for (col = 0; col < N; col = col + 1) begin : COL
                 if (row == 0) begin
                     // Assign A into the topmost Processing element of each col (Row 0)
-                    assign b_wire[0][col] = i_MatrixB[col*DATA_WIDTH +: DATA_WIDTH]
+                    assign b_wire[0][col] = i_MatrixB[col*DATA_WIDTH +: DATA_WIDTH];
                 end
 
                 processing_element #(
@@ -47,7 +48,7 @@ module systolic_array_NxN #(
                 ) pe_inst (
                     .i_clk(i_clk),
                     .i_rst(i_rst),
-                    .i_accRst(i_rstAcc),
+                    .i_rstAcc(i_rstAcc),
 
                     .i_aIn(a_wire[row][col]),
                     .i_bIn(b_wire[row][col]),

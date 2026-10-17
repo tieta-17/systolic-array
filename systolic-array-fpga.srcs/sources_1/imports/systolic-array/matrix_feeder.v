@@ -14,15 +14,15 @@ module matrix_feeder #(
     output reg [(N*DATA_WIDTH)-1 : 0] o_aOut,
     output reg [(N*DATA_WIDTH)-1 : 0] o_bOut,
 
-    output wire o_active,
+    output wire o_feeding
 );
     localparam STAGES = (2 * N) - 1;
     localparam STAGE_WIDTH = (STAGES <= 1) ? 1 : $clog2(STAGES);
 
-    reg [STAGE_WIDTH : 0] stage;
+    reg [STAGE_WIDTH-1 : 0] stage;
     reg active; 
 
-    assign o_active = active;
+    assign o_feeding = active;
 
 
     always @(posedge i_clk or posedge i_rst) begin
@@ -31,11 +31,11 @@ module matrix_feeder #(
             active <= 0;
         end else if (i_start) begin
             stage <= 0;
-            active <= 1
+            active <= 1;
         end else if (active) begin
-            if (stage == STAGES - 2) begin // end of stage is STAGES - 2
+            if (stage == STAGES - 1) begin // end of stage is STAGES - 1
                 active <= 0;
-            end else 
+            end else begin
                 stage <= stage + 1'b1;
             end
         end
@@ -53,8 +53,7 @@ module matrix_feeder #(
             for (row = 0; row < N; row = row + 1) begin
 
                 if ((stage >= row) && (stage < row + N)) begin
-                    o_aOut[row*DATA_WIDTH +: DATA_WIDTH] = 
-                    i_MatrixA[(row * N + (stage-row) * DATA_WIDTH +: DATA_WIDTH]; // process in row major order;
+                    o_aOut[row*DATA_WIDTH +: DATA_WIDTH] = i_MatrixA[(row * N + (stage-row)) * DATA_WIDTH +: DATA_WIDTH]; // process in row major order;
                 end
             end
 
