@@ -1,6 +1,6 @@
 module matrix_feeder #(
     parameter DATA_WIDTH = 8,
-    parameter N = 2
+    parameter N = 4
 ) (
     // Takes in a row-major matrix and staggers output depending on which row/col is selected
     // Row major formula : (row * N + col) * DATA_WIDTH +: DATAWIDTH
@@ -23,7 +23,6 @@ module matrix_feeder #(
     reg active; 
 
     assign o_feeding = active;
-
 
     always @(posedge i_clk or posedge i_rst) begin
         if (i_rst) begin

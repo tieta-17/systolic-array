@@ -1,7 +1,7 @@
 module systolic_array_NxN #(
     parameter DATA_WIDTH = 8,
     parameter ACCUMULATE_WIDTH = 16, // FORMULA; ACC_WIDTH >= 2DATA_WIDTH + LOG2(N) (Do later)
-    parameter N = 2
+    parameter N = 4
 )(  
     // Systolic array just does processing after getting handed values from an external data manager, no need for regs
     
@@ -17,7 +17,7 @@ module systolic_array_NxN #(
     input wire [(N * DATA_WIDTH)-1:0] i_MatrixB,
 
     // Final accumulated matrix; probably need to do some bit masking to get output
-    output wire [(N * N * ACCUMULATE_WIDTH)-1 : 0] o_MatrixAccumualte
+    output wire [(N * N * ACCUMULATE_WIDTH)-1 : 0] o_MatrixAccumulate
 );  
 
     // Horizontal A-connections
@@ -61,7 +61,7 @@ module systolic_array_NxN #(
                 );
                 
                 // Ensure values are in row major order; [63 -- C3 -- 48][47 -- C2 -- 32][31 -- C1 -- 16][15 -- C0 -- 0]
-                assign o_MatrixAccumualte[(row * N + col) * ACCUMULATE_WIDTH +: ACCUMULATE_WIDTH] = acc_wire[row][col];
+                assign o_MatrixAccumulate[(row * N + col) * ACCUMULATE_WIDTH +: ACCUMULATE_WIDTH] = acc_wire[row][col];
             end
         end
 
